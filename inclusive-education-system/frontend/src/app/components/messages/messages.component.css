@@ -1,0 +1,42 @@
+/* Messages Page Container */
+.messages-page { max-width: 1400px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; }
+
+/* Page Header */
+.page-header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1.5rem; background: var(--header-gradient); border-radius: 1rem; color: white; }
+.header-content { flex: 1; }
+.page-title { font-size: 2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: white; }
+.page-subtitle { font-size: 1.125rem; margin: 0; opacity: 0.95; }
+.header-actions .btn { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; }
+.header-actions .btn:hover { background: rgba(255,255,255,0.3); }
+
+/* Messages Container */
+.messages-container { flex: 1; display: grid; grid-template-columns: 300px 1fr; gap: 1.5rem; min-height: 500px; }
+
+/* Users List */
+.users-list { background: var(--bg-primary); border-radius: 0.75rem; padding: 1.5rem; box-shadow: var(--shadow-md); overflow-y: auto; }
+.users-list h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem 0; color: var(--text-primary); }
+
+/* Empty State */
+.empty-state { text-align: center; padding: 2rem 1rem; color: var(--text-secondary); }
+.empty-state p { margin: 0.5rem 0; }
+.empty-state p:first-child { font-weight: 600; color: var(--text-primary); }
+
+/* Conversation View */
+.conversation-view { background: var(--bg-primary); border-radius: 0.75rem; padding: 2rem; box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; }
+
+/* Empty Conversation */
+.empty-conversation { text-align: center; color: var(--text-secondary); }
+.empty-conversation svg { color: var(--border-color); margin-bottom: 1rem; }
+.empty-conversation p { margin: 0; font-size: 1rem; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header-section { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .messages-container { grid-template-columns: 1fr; }
+  .users-list { max-height: 300px; }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 1.5rem; }
+  .page-subtitle { font-size: 1rem; }
+}

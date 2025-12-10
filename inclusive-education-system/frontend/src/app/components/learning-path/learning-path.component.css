@@ -1,0 +1,83 @@
+.learning-path-page {
+  display: block;
+  padding: 16px;
+}
+
+.page-header-section {
+  background: #f6f7fb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.header-content .page-title {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px 0;
+}
+
+.content-section {
+  display: grid;
+  gap: 16px;
+}
+
+.section-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+}
+
+.section-header h2 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+}
+
+.modules-list,
+.schedule-list {
+  display: grid;
+  gap: 8px;
+}
+
+.module-item,
+.schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.muted {
+  color: #6b7280;
+}

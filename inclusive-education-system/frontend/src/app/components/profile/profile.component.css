@@ -1,0 +1,64 @@
+/* Profile Page Container */
+.profile-page { max-width: 1400px; margin: 0 auto; }
+
+/* Page Header */
+.page-header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; color: white; }
+.header-content { flex: 1; }
+.page-title { font-size: 2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: white; }
+.page-subtitle { font-size: 1.125rem; margin: 0; opacity: 0.95; }
+.header-actions .btn { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; }
+.header-actions .btn:hover { background: rgba(255,255,255,0.3); }
+
+/* Content Section */
+.content-section { display: flex; flex-direction: column; gap: 2rem; }
+
+/* Section Cards */
+.section-card { background: var(--bg-primary); border-radius: 0.75rem; padding: 1.5rem; box-shadow: var(--shadow-md); }
+.section-header { margin-bottom: 1.5rem; }
+.section-header h2 { font-size: 1.25rem; font-weight: 600; margin: 0; color: var(--text-primary); }
+
+/* Profile Info Card */
+.profile-info-card { background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); border: 2px solid rgba(102, 126, 234, 0.2); }
+.profile-header { display: flex; align-items: center; gap: 2rem; }
+.profile-avatar-large { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 700; flex-shrink: 0; }
+.profile-info h2 { font-size: 1.75rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--text-primary); }
+.user-role { font-size: 1rem; font-weight: 600; color: var(--primary-color); margin: 0 0 0.25rem 0; }
+.user-email { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
+
+/* Profile Form */
+.profile-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; }
+.form-label { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+.form-control { padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.95rem; color: var(--text-primary); background: var(--bg-primary); transition: all 0.2s; }
+.form-control:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+.form-control:disabled { background: var(--bg-secondary); cursor: not-allowed; opacity: 0.7; }
+.form-actions { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem; }
+
+/* Stats Grid */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.stat-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; }
+.stat-icon { width: 48px; height: 48px; border-radius: 0.75rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.stat-icon svg { color: var(--primary-color); }
+.stat-content { display: flex; flex-direction: column; }
+.stat-value { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); line-height: 1; }
+.stat-label { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .page-header-section { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .profile-header { flex-direction: column; text-align: center; }
+  .profile-info { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 1.5rem; }
+  .page-subtitle { font-size: 1rem; }
+  .profile-avatar-large { width: 80px; height: 80px; font-size: 2rem; }
+}

@@ -1,0 +1,41 @@
+<div class="modules-wrapper">
+  <h2>{{ course?.title || 'Course Modules' }}</h2>
+  <a routerLink="/dashboard/courses" class="btn" style="background:#6b7280;margin:6px 0;display:inline-block;text-decoration:none;">← Back to Courses</a>
+
+  <div class="alerts">
+    <div class="alert error" *ngIf="error">
+      {{ error }}
+      <button class="btn" style="margin-left:8px;background:#10b981" (click)="retry()">Retry</button>
+    </div>
+    <div class="alert success" *ngIf="success">{{ success }}</div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading modules...</div>
+
+  <div *ngIf="!loading">
+    <div class="meta">
+      <span class="badge">{{ course?.category }}</span>
+      <span class="badge level">{{ course?.difficulty_level }}</span>
+      <span class="muted">Progress: {{ progress }}%</span>
+    </div>
+
+    <div style="height:8px;background:#eef2ff;border-radius:6px;overflow:hidden;margin:6px 0 12px 0;">
+      <div [style.width]="progress + '%'" style="height:100%;background:#2563eb"></div>
+    </div>
+
+    <ul class="module-list">
+      <li class="module-item" *ngFor="let m of modules">
+        <div class="info">
+          <div class="title">{{ m.module_order }}. {{ m.title }}</div>
+          <div class="sub">Duration: {{ m.duration_minutes || 45 }} min</div>
+        </div>
+        <div class="actions">
+          <span *ngIf="m.completed === 1" class="badge done">Completed</span>
+          <button *ngIf="m.completed !== 1" (click)="completeModule(m.id)" [disabled]="submitting[m.id]" class="btn">
+            {{ submitting[m.id] ? 'Marking...' : 'Mark as completed' }}
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

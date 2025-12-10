@@ -1,0 +1,42 @@
+<div class="peer-opportunities">
+  <div class="page-header">
+    <div>
+      <h1>Mentoring Opportunities</h1>
+      <p>Offer sessions or request guidance tailored to specific subjects.</p>
+    </div>
+    <div class="subject-picker">
+      <label for="subject">Subject focus</label>
+      <select id="subject" [(ngModel)]="selectedSubject">
+        <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card" *ngFor="let opportunity of opportunities">
+      <div class="card-icon" [class.offer]="opportunity.type === 'offer'">
+        <svg *ngIf="opportunity.type === 'apply'" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <svg *ngIf="opportunity.type === 'offer'" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19V6"></path>
+          <path d="M5 12h14"></path>
+        </svg>
+      </div>
+      <h2>{{ opportunity.title }}</h2>
+      <p class="subject">{{ opportunity.subject }}</p>
+      <p>{{ opportunity.description }}</p>
+      <button class="btn btn-primary" (click)="submit(opportunity)">{{ opportunity.action }}</button>
+    </div>
+  </div>
+
+  <div class="process-card">
+    <h3>Next Steps</h3>
+    <ol>
+      <li>Share your availability and the topics you want to cover.</li>
+      <li>We’ll connect you with students or senior mentors interested in the same subject.</li>
+      <li>Coordinate your session schedule from the Messages area.</li>
+    </ol>
+  </div>
+</div>
+

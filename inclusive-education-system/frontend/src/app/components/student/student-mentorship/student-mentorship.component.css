@@ -1,0 +1,113 @@
+.mentorship-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.page-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.interest-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 220px;
+}
+
+.interest-select label {
+  font-weight: 600;
+}
+
+.interest-select select {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.option-card {
+  background: var(--bg-primary);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  color: var(--primary-color);
+}
+
+.option-card h2 {
+  margin: 0;
+}
+
+.option-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.info-panel {
+  background: var(--bg-primary);
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.info-panel h3 {
+  margin-top: 0;
+}
+
+.info-panel ul {
+  margin: 1rem 0 0 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 1.5rem;
+  }
+
+  .interest-select {
+    width: 100%;
+  }
+}
+

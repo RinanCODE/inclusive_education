@@ -1,0 +1,235 @@
+<div class="settings-page">
+  <!-- Page Header -->
+  <div class="page-header-section">
+    <div class="header-content">
+      <h1 class="page-title">Settings</h1>
+      <p class="page-subtitle">Customize your learning experience and preferences</p>
+    </div>
+  </div>
+
+  <!-- Settings Content -->
+  <div class="content-section">
+    <!-- Accessibility Settings -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Accessibility Settings</h2>
+        <p class="section-description">Adjust settings to make the platform more accessible</p>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>High Contrast Mode</h3>
+              <p>Increase contrast for better visibility</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" (change)="toggleHighContrast($event)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                <line x1="9" y1="20" x2="15" y2="20"></line>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Dyslexia-Friendly Font</h3>
+              <p>Use OpenDyslexic font for easier reading</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" (change)="toggleDyslexiaFont($event)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Font Size</h3>
+              <p>Adjust text size: {{ fontSize }}%</p>
+            </div>
+          </div>
+          <div class="font-size-controls">
+            <button class="btn-icon" (click)="decreaseFontSize()" [disabled]="fontSize <= 100">-</button>
+            <span class="font-size-value">{{ fontSize }}%</span>
+            <button class="btn-icon" (click)="increaseFontSize()" [disabled]="fontSize >= 200">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Settings -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Notification Preferences</h2>
+        <p class="section-description">Choose what notifications you want to receive</p>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Email Notifications</h3>
+              <p>Receive updates via email</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Push Notifications</h3>
+              <p>Get instant notifications in browser</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Message Notifications</h3>
+              <p>Notify when you receive new messages</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Settings -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Privacy & Security</h2>
+        <p class="section-description">Manage your privacy and security preferences</p>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Profile Visibility</h3>
+              <p>Make your profile visible to others</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <div class="setting-content">
+              <h3>Two-Factor Authentication</h3>
+              <p>Add an extra layer of security</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language & Region -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Language & Region</h2>
+        <p class="section-description">Set your preferred language and timezone</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Language</label>
+          <select class="form-control">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="zh">Chinese</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Timezone</label>
+          <select class="form-control">
+            <option value="utc">UTC</option>
+            <option value="est">Eastern Time (EST)</option>
+            <option value="pst">Pacific Time (PST)</option>
+            <option value="gmt">GMT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="section-card danger-card">
+      <div class="section-header">
+        <h2>Danger Zone</h2>
+        <p class="section-description">Irreversible actions - proceed with caution</p>
+      </div>
+      <div class="danger-actions">
+        <button class="btn btn-danger">Delete Account</button>
+        <p class="danger-warning">Once you delete your account, there is no going back. Please be certain.</p>
+      </div>
+    </div>
+  </div>
+</div>

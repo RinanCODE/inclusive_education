@@ -1,0 +1,40 @@
+<div class="mentorship-page">
+  <div class="page-header">
+    <div>
+      <h1>Mentorship & Tutoring</h1>
+      <p>Get personalized support from trusted tutors or peer mentors.</p>
+    </div>
+    <div class="interest-select">
+      <label for="interest">Focus area</label>
+      <select id="interest" [(ngModel)]="selectedInterest">
+        <option *ngFor="let interest of interests" [value]="interest">{{ interest }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="options-grid">
+    <div class="option-card">
+      <div class="option-icon target">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+          <line x1="22" y1="12" x2="18" y2="12"></line>
+        </svg>
+      </div>
+      <h2>{{ mentorshipOption.title }}</h2>
+      <p>{{ mentorshipOption.description }}</p>
+      <button class="btn btn-primary" (click)="startApplication()">{{ mentorshipOption.cta }}</button>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <h3>How it works</h3>
+    <ul>
+      <li>Choose the type of support you need and submit a quick application.</li>
+      <li>Our team reviews your goals and interest area to find the best match.</li>
+      <li>You’ll receive an introduction message with next steps within 48 hours.</li>
+    </ul>
+  </div>
+</div>
+

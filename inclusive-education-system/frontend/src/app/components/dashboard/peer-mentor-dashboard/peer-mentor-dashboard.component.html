@@ -1,0 +1,241 @@
+<div class="peer-mentor-dashboard">
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <div class="welcome-content">
+      <h1 class="greeting">{{ getGreeting() }}, {{ currentUser?.name }}! 👋</h1>
+      <p class="welcome-text">Here's your mentoring overview</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="navigateTo('/dashboard/chatbot')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Ask AI Assistant
+      </button>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon students">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <span class="stat-label">Active Students</span>
+      </div>
+      <div class="stat-value">{{ activeStudents }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">Currently mentoring</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon sessions">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <span class="stat-label">Total Sessions</span>
+      </div>
+      <div class="stat-value">{{ totalSessions }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">Completed this semester</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon groups">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <span class="stat-label">Study Groups</span>
+      </div>
+      <div class="stat-value">{{ studyGroupsManaged }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">Groups managed</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon rating">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <span class="stat-label">Average Rating</span>
+      </div>
+      <div class="stat-value">{{ averageRating }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">From student feedback</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-section">
+    <!-- Upcoming Sessions -->
+    <div class="section-card sessions-section">
+      <div class="section-header">
+        <h2>Upcoming Sessions</h2>
+        <button class="btn-text" (click)="navigateTo('/dashboard/schedule')">View All →</button>
+      </div>
+      <div class="sessions-list">
+        <div class="session-item">
+          <div class="session-time">
+            <span class="day">MON</span>
+            <span class="date">15</span>
+          </div>
+          <div class="session-info">
+            <h3>Mathematics Tutoring</h3>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              Sarah Johnson
+            </p>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              2:00 PM - 3:00 PM
+            </p>
+          </div>
+          <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/messages')">Join Session</button>
+        </div>
+
+        <div class="session-item">
+          <div class="session-time">
+            <span class="day">TUE</span>
+            <span class="date">16</span>
+          </div>
+          <div class="session-info">
+            <h3>Study Group - Physics</h3>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              5 students
+            </p>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              4:00 PM - 5:30 PM
+            </p>
+          </div>
+          <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/study-groups')">Join Session</button>
+        </div>
+
+        <div class="session-item">
+          <div class="session-time">
+            <span class="day">WED</span>
+            <span class="date">17</span>
+          </div>
+          <div class="session-info">
+            <h3>English Literature Review</h3>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              Michael Chen
+            </p>
+            <p class="session-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              10:00 AM - 11:00 AM
+            </p>
+          </div>
+          <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/messages')">Join Session</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="section-card activity-section">
+      <div class="section-header">
+        <h2>Recent Activity</h2>
+      </div>
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
+          </div>
+          <div class="activity-content">
+            <p class="activity-title">New student assigned</p>
+            <p class="activity-time">2 hours ago</p>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="activity-content">
+            <p class="activity-title">Session completed with John Doe</p>
+            <p class="activity-time">5 hours ago</p>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="activity-content">
+            <p class="activity-title">Received 5-star rating from student</p>
+            <p class="activity-time">1 day ago</p>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="activity-content">
+            <p class="activity-title">Study group session scheduled</p>
+            <p class="activity-time">2 days ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

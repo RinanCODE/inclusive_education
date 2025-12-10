@@ -1,0 +1,236 @@
+<div class="student-dashboard">
+  <!-- Welcome Header -->
+  <div class="dashboard-header">
+    <div class="welcome-content">
+      <h1 class="greeting">{{ getGreeting() }}, {{ currentUser?.name }}! 👋</h1>
+      <p class="welcome-text">Ready to continue your learning journey?</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="navigateTo('/dashboard/chatbot')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Ask AI Assistant
+      </button>
+      <button class="btn" (click)="openLearningPath()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M4 4h16v13H6.5A2.5 2.5 0 0 0 4 19.5z"/>
+        </svg>
+        Learning Path
+      </button>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon enrolled">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <span class="stat-label">Enrolled Courses</span>
+      </div>
+      <div class="stat-value">{{ enrolledCourses }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">{{ inProgressCourses }} in progress</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon completed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <span class="stat-label">Completed</span>
+      </div>
+      <div class="stat-value">{{ completedCourses }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">{{ (completedCourses / enrolledCourses * 100) | number:'1.0-0' }}% completion rate</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon progress">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <span class="stat-label">Average Progress</span>
+      </div>
+      <div class="stat-value">{{ averageProgress }}%</div>
+      <div class="stat-footer">
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="averageProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon groups">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <span class="stat-label">Study Groups</span>
+      </div>
+      <div class="stat-value">{{ studyGroups }}</div>
+      <div class="stat-footer">
+        <span class="stat-detail">Active memberships</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-section">
+    <!-- My Courses -->
+    <div class="section-card courses-section">
+      <div class="section-header">
+        <h2>My Courses</h2>
+        <button class="btn-text" (click)="navigateTo('/dashboard/learning-path')">View All →</button>
+      </div>
+        <div class="courses-list">
+          <div class="course-item">
+            <div class="course-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="course-info">
+              <h3>Introduction to Programming</h3>
+              <p class="course-meta">Computer Science • Beginner</p>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <span class="progress-text">75% Complete</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/learning-path')">Continue Learning</button>
+          </div>
+
+          <div class="course-item">
+            <div class="course-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div class="course-info">
+              <h3>Web Development Fundamentals</h3>
+              <p class="course-meta">Web Development • Beginner</p>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+                <span class="progress-text">45% Complete</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/learning-path')">Continue Learning</button>
+          </div>
+
+          <div class="course-item">
+            <div class="course-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="course-info">
+              <h3>Data Structures and Algorithms</h3>
+              <p class="course-meta">Computer Science • Intermediate</p>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 30%"></div>
+                </div>
+                <span class="progress-text">30% Complete</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" (click)="navigateTo('/dashboard/learning-path')">Continue Learning</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- AI Recommendations -->
+    <div class="section-card recommendations-section">
+      <div class="section-header">
+        <h2>AI Recommendations</h2>
+      </div>
+        <div class="recommendations-list">
+          <div class="recommendation-item" *ngFor="let r of recommendations">
+            <div class="recommendation-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="recommendation-content">
+              <h4>{{ r.title }}</h4>
+              <p>{{ r.reason || r.description }}</p>
+              <button class="btn-text" (click)="navigateTo('/dashboard/chatbot')">Explore →</button>
+            </div>
+          </div>
+          <div *ngIf="!recommendations?.length" class="empty-state">
+            <p>No recommendations yet. Try completing a module to get personalized suggestions.</p>
+          </div>
+        </div>
+    </div>
+
+    <!-- Full Recommendations Bundle -->
+    
+
+    <!-- Recent Performance -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>Recent Performance</h2>
+      </div>
+      <div class="performance-list">
+        <div class="performance-item" *ngFor="let p of recentPerformance">
+          <div>
+            <div class="title">{{ p.module_title }} <span class="muted">• {{ p.course_title }}</span></div>
+            <div class="muted">{{ p.timestamp | date:'medium' }}</div>
+          </div>
+          <div class="score">
+            <span class="badge">{{ p.completion_status }}</span>
+            <span *ngIf="p.score !== null">{{ p.score }}%</span>
+          </div>
+        </div>
+        <div *ngIf="!recentPerformance?.length" class="empty-state">
+          <p>No recent activity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggested Peers -->
+    <div class="section-card" *ngIf="suggestedPeers?.length">
+      <div class="section-header">
+        <h2>Suggested Peers</h2>
+      </div>
+      <div class="peers-list">
+        <div class="peer-item" *ngFor="let p of suggestedPeers">
+          <div class="peer-info">
+            <div class="avatar-sm">{{ (p.name || 'U').substring(0,2).toUpperCase() }}</div>
+            <div>
+              <div class="name">{{ p.name }}</div>
+              <div class="muted">{{ p.role }}</div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" (click)="openChatWithPeer(p)">Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

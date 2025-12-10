@@ -1,0 +1,32 @@
+<div class="chatbot-page">
+  <!-- Page Header -->
+  <div class="page-header-section">
+    <div class="header-content">
+      <h1 class="page-title">AI Learning Assistant 🤖</h1>
+      <p class="page-subtitle">Ask me anything about your courses and learning materials</p>
+    </div>
+  </div>
+
+  <!-- Chat Container -->
+  <div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let m of messages" class="message" [ngClass]="m.role">
+        <div class="message-avatar">{{ m.role === 'bot' ? 'AI' : 'You' }}</div>
+        <div class="message-content">
+          <p>{{ m.text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message..." [(ngModel)]="inputText" (keyup.enter)="send()" />
+      <button class="btn" type="button" (click)="toggleMic()" [disabled]="sending || !speechSupported" [class.btn-primary]="listening" [title]="speechSupported ? (listening ? 'Stop mic' : 'Start mic') : 'Voice not supported'">
+        {{ listening ? '🎙️ Stop' : '🎤 Mic' }}
+      </button>
+      <label class="btn" title="Upload PDF or text for summary">
+        📄 Upload
+        <input type="file" accept=".pdf,.txt" (change)="onFileSelected($event)" hidden />
+      </label>
+      <button class="btn btn-primary" (click)="send()" [disabled]="sending || !inputText.trim()">{{ sending ? 'Sending...' : 'Send' }}</button>
+    </div>
+  </div>
+</div>

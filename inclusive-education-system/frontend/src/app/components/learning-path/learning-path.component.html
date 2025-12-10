@@ -1,0 +1,74 @@
+<div class="learning-path-page">
+  <div class="page-header-section">
+    <div class="header-content" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <div>
+        <h1 class="page-title">Learning Path</h1>
+        <p class="page-subtitle">Your 7-day study plan powered by AI</p>
+      </div>
+      <div class="actions">
+        <button class="btn" (click)="reload()" [disabled]="loading">
+          {{ loading ? 'Refreshing...' : 'Refresh' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="empty-state">Loading...</div>
+  <div *ngIf="!loading && error" class="empty-state">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="content-section">
+    <div class="section-card">
+      <div class="section-header"><h2>Focus Areas</h2></div>
+      <ng-container *ngIf="categories?.length; else noCategories">
+        <div class="tags">
+          <span class="tag" *ngFor="let c of categories">{{ c }}</span>
+        </div>
+      </ng-container>
+      <ng-template #noCategories>
+        <div class="muted">No categories available.</div>
+      </ng-template>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header"><h2>Recommended Modules</h2></div>
+      <ng-container *ngIf="plan?.length; else noPlan">
+        <div class="modules-list">
+          <div class="module-item" *ngFor="let m of plan">
+            <div>
+              <div class="title">{{ m.title }} <span class="muted">• {{ m.course }}</span></div>
+              <div class="muted">Category: {{ m.category }}</div>
+              <div class="muted">Milestone: {{ m.milestone }}</div>
+            </div>
+            <div class="muted">~{{ m.recommended_duration_min }} min</div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noPlan>
+        <div class="muted">No recommended modules at the moment.</div>
+      </ng-template>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header"><h2>7-Day Schedule</h2></div>
+      <ng-container *ngIf="schedule?.length; else noSchedule">
+        <div class="schedule-list">
+          <div class="schedule-item" *ngFor="let s of schedule">
+            <div class="muted">Day +{{ s.day_offset }}</div>
+            <div>{{ s.task }}</div>
+            <div class="muted">{{ s.duration_min }} min</div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noSchedule>
+        <div class="muted">No schedule generated.</div>
+      </ng-template>
+    </div>
+
+    <div class="section-card" *ngIf="insights?.length">
+      <div class="section-header"><h2>Tips</h2></div>
+      <ul>
+        <li *ngFor="let i of insights">{{ i }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

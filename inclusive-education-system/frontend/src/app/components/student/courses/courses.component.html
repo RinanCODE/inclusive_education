@@ -1,0 +1,44 @@
+<div class="courses-wrapper">
+  <h2>Available Courses</h2>
+
+  <div class="toolbar" style="display:flex;gap:8px;align-items:center;margin:8px 0 12px 0;">
+    <input [(ngModel)]="query" placeholder="Search by title or category" style="flex:1;padding:8px 10px;border:1px solid #e5e7eb;border-radius:6px;" />
+    <button class="enroll-btn" (click)="refresh()">Refresh</button>
+  </div>
+
+  <div class="alerts">
+    <div class="alert error" *ngIf="error">{{ error }}</div>
+    <div class="alert success" *ngIf="success">{{ success }}</div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading courses...</div>
+
+  <div *ngIf="!loading && filteredCourses.length === 0" class="muted" style="padding:8px 0;">
+    No courses found.
+  </div>
+
+  <div class="course-grid" *ngIf="!loading && filteredCourses.length > 0">
+    <div class="course-card" *ngFor="let c of filteredCourses; trackBy: trackByCourse">
+      <img *ngIf="c.thumbnail_url" [src]="c.thumbnail_url" alt="{{ c.title }}" />
+      <div class="course-body">
+        <h3>{{ c.title }}</h3>
+        <p class="desc">{{ c.description }}</p>
+        <div class="meta">
+          <span class="badge">{{ c.category }}</span>
+          <span class="badge level">{{ c.difficulty_level }}</span>
+          <span class="muted">{{ c.module_count }} modules</span>
+          <span class="muted">{{ c.enrollment_count }} enrolled</span>
+        </div>
+        <ng-container>
+          <button *ngIf="!c.enrolled_by_me" (click)="enroll(c.id)" [disabled]="enrollingId === c.id" class="enroll-btn">
+            {{ enrollingId === c.id ? 'Enrolling...' : 'Enroll' }}
+          </button>
+          <span *ngIf="c.enrolled_by_me" class="badge" style="background:#ecfdf5;color:#065f46">Enrolled</span>
+        </ng-container>
+        <a [routerLink]="['/dashboard/courses', c.id]" class="enroll-btn" style="background:#10b981;margin-left:8px;display:inline-block;text-decoration:none;">
+          View Modules
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
